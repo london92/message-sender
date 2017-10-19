@@ -1,3 +1,7 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
-export default () => [];
+import MessageSettingsReducer from './MessageSettingsReducer';
+
+export default combineReducers({
+    messageSettings: MessageSettingsReducer
+})
