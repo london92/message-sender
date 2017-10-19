@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     selectedCountryUID: ""
 };
 
-export default (state= INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action) => {
     switch (action.type){
         case FETCH_COUNTRIES_SUCCESS:
             return { ...state, countries: action.payload };

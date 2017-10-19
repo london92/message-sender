@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Picker } from 'react-native';
+import { Text, StyleSheet, Picker } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 import { Card, CardSection, Button } from './common';
 import { fetchCountries, countryChanged } from '../actions';
@@ -36,7 +37,9 @@ class Main extends Component{
         this.props.countryChanged(countryUID)
     }
 
-
+    _addMessage(){
+        Actions.messageGenerate();
+    }
 
     render(){
 
@@ -52,6 +55,11 @@ class Main extends Component{
                         onValueChange={this._onCountryChanged.bind(this)}>
                         {this._renderPicker()}
                     </Picker>
+                </CardSection>
+
+                <CardSection>
+                    <Text style={textStyle}>Message</Text>
+                    <Button onPress={this._addMessage.bind(this)}>Generate</Button>
                 </CardSection>
 
                 <CardSection>
@@ -73,7 +81,8 @@ const styles = StyleSheet.create({
     textStyle: {
         color: '#000',
         alignSelf: 'center',
-        flex: 1
+        flex: 1,
+        paddingLeft: 10
     }
 });
 
