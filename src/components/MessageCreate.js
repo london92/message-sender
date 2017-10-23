@@ -49,6 +49,7 @@ MessageCreate.propTypes = {
     saveNewMessage: PropTypes.func
 };
 
+//TODO Add some styling!
 const styles = StyleSheet.create({
    inputStyle: {
        flex: 1,
