@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -7,6 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import reducers from './src/reducers';
 import Router from './src/Router';
+import registerForPushNotificationsAsync from './src/services/push_notifications';
 
 export default class App extends Component {
 
@@ -20,6 +21,7 @@ export default class App extends Component {
           messagingSenderId: "855124879888"
       };
       firebase.initializeApp(config);
+      registerForPushNotificationsAsync();
   }
 
   render() {

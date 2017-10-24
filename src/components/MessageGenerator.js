@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
+import { ListView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import { fetchMessageList } from '../actions';
+import ListItem from './ListItem';
 
 class MessageGenerator extends Component{
 
@@ -31,11 +32,16 @@ class MessageGenerator extends Component{
         this.dataSource = ds.cloneWithRows(messageList)
     }
 
+    _renderRow(message){
+        return <ListItem message={message}/>
+    }
+
     render(){
         return(
-            <View>
-                <Text>it works!</Text>
-            </View>
+            <ListView
+                enableEmptySections
+                dataSource={this.dataSource}
+                renderRow={this._renderRow}/>
         )
     }
 }

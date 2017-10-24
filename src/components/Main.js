@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
+import firebase from 'firebase';
 
 import { Card, CardSection, Button } from './common';
 import { fetchCountries, countryChanged } from '../actions';
@@ -23,6 +24,8 @@ class Main extends Component{
 
     _onPress(){
         console.log(this.props)
+        let name ='top_client';
+        firebase.database().ref(`/countries/-Kwncx5b_dcJe1AaQcBa/clients`).push({ name })
     }
 
     _renderPicker(){
